@@ -276,23 +276,3 @@ if __name__ == "__main__":
     import nest_asyncio
     nest_asyncio.apply()
     asyncio.get_event_loop().run_until_complete(run_app())
-from flask import Flask
-import threading
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return "sniper Source is running!"
-
-def run_flask():
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host="0.0.0.0", port=port)
-
-flask_thread = threading.Thread(target=run_flask)
-flask_thread.start()
-
-
-loop = asyncio.get_event_loop()
-loop.create_task(update_username())  # 
-client.run_until_disconnected()
